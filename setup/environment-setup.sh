@@ -18,11 +18,11 @@ gcloud beta dataproc clusters create kafka \
 --master-boot-disk-size 50 \
 --optional-components ZOOKEEPER,ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --metadata "run-on-master=true" \
 --initialization-actions 'gs://dataproc-initialization-actions/kafka/kafka.sh' \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 # Data preparation
@@ -37,10 +37,10 @@ gcloud beta dataproc clusters create spark-dataprep \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,com.google.cloud.spark:spark-bigquery-with-dependencies_2.11:0.13.1-beta \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 # Stats calculation of Alert 1 and the alerting itself
@@ -55,10 +55,10 @@ gcloud beta dataproc clusters create spark-alert-1-stats \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 gcloud beta dataproc clusters create spark-alert-1-detect \
@@ -72,10 +72,10 @@ gcloud beta dataproc clusters create spark-alert-1-detect \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,com.google.cloud.spark:spark-bigquery-with-dependencies_2.11:0.13.1-beta \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 # Stats calculation of Alert 2 and the alerting itself
@@ -90,10 +90,10 @@ gcloud beta dataproc clusters create spark-alert-2-stats \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4 \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 gcloud beta dataproc clusters create spark-alert-2-detect \
@@ -107,10 +107,10 @@ gcloud beta dataproc clusters create spark-alert-2-detect \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,com.google.cloud.spark:spark-bigquery-with-dependencies_2.11:0.13.1-beta \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
 
 # Ingestion to BigQuery
@@ -125,8 +125,8 @@ gcloud beta dataproc clusters create spark-ingest \
 --master-boot-disk-size 50 \
 --optional-components ANACONDA,JUPYTER \
 --tags dataproc \
---project pandora-sde-case \
+--project smartplugs-streaming \
 --image-version=1.4 \
 --properties ^*^spark:spark.jars.packages=org.apache.spark:spark-sql-kafka-0-10_2.11:2.4.4,com.google.cloud.spark:spark-bigquery-with-dependencies_2.11:0.13.1-beta \
---bucket pandora-sde-case \
+--bucket smartplugs-streaming \
 --async
